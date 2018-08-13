@@ -59,15 +59,15 @@ class Endo_Feedback_Form {
 				<div class="endo-feedback-form-wrapper">
 					<form id="endo-feedback-form" action="<?php echo get_permalink( get_the_ID() ); ?>" method="POST">
 						<div class="field">
-						  <label class="label">What do you think of the new <em>Track and Field News</em> site?</label>
+						  <label class="label">{{ question }}</label>
 						  <div class="control">
 						    <textarea name="message" class="textarea" rows="5" required placeholder="Enter your message here..."></textarea>
 						  </div>
-						</div>
+						</div>	
 
 						<div class="field">
 						  <div class="control">
-						  	<input type="hidden" name="question" value="What do you think of the new Track and Field News site?">
+						  	<input type="hidden" name="question" :value="question">
 						  	<?php wp_nonce_field( 'endo_feedback_submit', 'endo_feedback_nonce_field' ); ?>
 						    <button class="button is-submit">Submit</button>
 						  </div>
@@ -80,13 +80,17 @@ class Endo_Feedback_Form {
 				
 			</div>
 
-			<button class="endo-feedback-button">Give Feedback</button>
+			<button class="endo-feedback-button">{{ ctaButton }}</button>
 
 		</div>
 
 		<script>
 			var ef = new Vue({
-				el: '#endo-feedback'
+				el: '#endo-feedback',
+				data: {
+					question: 'What do you think of our new design?',
+					ctaButton: 'Give Feedback'
+				}
 			});
 		</script>
 
