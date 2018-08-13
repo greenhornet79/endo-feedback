@@ -82,7 +82,7 @@ class Endo_Feedback_Form {
 				</div>
 			</transition>
 
-			<button class="endo-feedback-button" @click="show = !show">{{ ctaButton }}</button>
+			<button class="endo-feedback-button" @click="show = !show">{{ show ? 'X' : ctaButton }}</button>
 
 		</div>
 
@@ -93,7 +93,7 @@ class Endo_Feedback_Form {
 					show: false,
 					question: 'What do you think of our new design?',
 					ctaButton: 'Give Feedback'
-				}
+				},
 			});
 		</script>
 
