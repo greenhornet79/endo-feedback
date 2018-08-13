@@ -52,6 +52,8 @@ class Endo_Feedback_Form {
 		}
 		?>
 
+		<div id="endo-feedback">
+
 			<div class="endo-feedback-wrapper">
 				
 				<div class="endo-feedback-form-wrapper">
@@ -79,6 +81,14 @@ class Endo_Feedback_Form {
 			</div>
 
 			<button class="endo-feedback-button">Give Feedback</button>
+
+		</div>
+
+		<script>
+			var ef = new Vue({
+				el: '#endo-feedback'
+			});
+		</script>
 
 		<?php 
 	}

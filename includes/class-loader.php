@@ -15,11 +15,13 @@ class Endo_Feedback {
 		self::includes();
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 
-	}
+	}	
 
 	public function load_scripts() {
 
-		wp_enqueue_script( 'endo_feedback_script', ENDO_FEEDBACK_PLUGIN_URL . 'js/script.js', array( 'jquery' ), '1.0.0', true );
+		// wp_enqueue_script( 'endo_feedback_script', ENDO_FEEDBACK_PLUGIN_URL . 'js/script.js', array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( 'vue', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js' );
+
 		wp_enqueue_style( 'endo_feedback_style', ENDO_FEEDBACK_PLUGIN_URL . 'css/style.css' );
 
 		$protocol = isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://';
