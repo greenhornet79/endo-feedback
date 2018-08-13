@@ -49,6 +49,7 @@
 }
 
 .endo-feedback-button {
+	z-index: 999;
 	position: fixed;
 	bottom: 50px;
 	right: 50px;
@@ -61,8 +62,15 @@
 	letter-spacing: 1px;
 	width: auto;
 	min-width: auto;	
+	display: none;
 }
 
 .endo-feedback-button:hover {
 	background: #E87E30;
+}
+
+@media screen and (min-width: 900px) {
+  .endo-feedback-button {
+  	display: block;
+  }
 }
