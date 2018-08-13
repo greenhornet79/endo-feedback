@@ -58,11 +58,11 @@ class Endo_Feedback_Form {
 				<div class="endo-feedback-wrapper" v-if="show">
 					
 					<div class="endo-feedback-form-wrapper">
-						<form id="endo-feedback-form" action="<?php echo get_permalink( get_the_ID() ); ?>" method="POST">
+						<form id="endo-feedback-form" action="<?php echo get_permalink( get_the_ID() ); ?>" method="POST" v-on:submit.prevent="onSubmit">
 							<div class="field">
 							  <label class="label">{{ question }}</label>
 							  <div class="control">
-							    <textarea name="message" class="textarea" rows="5" required placeholder="Enter your message here..."></textarea>
+							    <textarea v-model="message" name="message" class="textarea" rows="5" required placeholder="Enter your message here..."></textarea>
 							  </div>
 							</div>	
 
@@ -92,8 +92,14 @@ class Endo_Feedback_Form {
 				data: {
 					show: false,
 					question: 'What do you think of our new design?',
-					ctaButton: 'Give Feedback'
+					ctaButton: 'Give Feedback',
+					message: ''
 				},
+				methods: {
+					onSubmit: function() {
+						
+					}
+				}
 			});
 		</script>
 
