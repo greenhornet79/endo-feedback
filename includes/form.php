@@ -54,33 +54,35 @@ class Endo_Feedback_Form {
 
 		<div id="endo-feedback">
 
-			<div class="endo-feedback-wrapper">
-				
-				<div class="endo-feedback-form-wrapper">
-					<form id="endo-feedback-form" action="<?php echo get_permalink( get_the_ID() ); ?>" method="POST">
-						<div class="field">
-						  <label class="label">{{ question }}</label>
-						  <div class="control">
-						    <textarea name="message" class="textarea" rows="5" required placeholder="Enter your message here..."></textarea>
-						  </div>
-						</div>	
+			<transition name="slide-fade">
+				<div class="endo-feedback-wrapper" v-if="show">
+					
+					<div class="endo-feedback-form-wrapper">
+						<form id="endo-feedback-form" action="<?php echo get_permalink( get_the_ID() ); ?>" method="POST">
+							<div class="field">
+							  <label class="label">{{ question }}</label>
+							  <div class="control">
+							    <textarea name="message" class="textarea" rows="5" required placeholder="Enter your message here..."></textarea>
+							  </div>
+							</div>	
 
-						<div class="field">
-						  <div class="control">
-						  	<input type="hidden" name="question" :value="question">
-						  	<?php wp_nonce_field( 'endo_feedback_submit', 'endo_feedback_nonce_field' ); ?>
-						    <button class="button is-submit">Submit</button>
-						  </div>
-						 
-						</div>
+							<div class="field">
+							  <div class="control">
+							  	<input type="hidden" name="question" :value="question">
+							  	<?php wp_nonce_field( 'endo_feedback_submit', 'endo_feedback_nonce_field' ); ?>
+							    <button class="button is-submit">Submit</button>
+							  </div>
+							 
+							</div>
 
-					</form>
+						</form>
+						
+					</div>
 					
 				</div>
-				
-			</div>
+			</transition>
 
-			<button class="endo-feedback-button">{{ ctaButton }}</button>
+			<button class="endo-feedback-button" @click="show = !show">{{ ctaButton }}</button>
 
 		</div>
 
@@ -88,6 +90,7 @@ class Endo_Feedback_Form {
 			var ef = new Vue({
 				el: '#endo-feedback',
 				data: {
+					show: false,
 					question: 'What do you think of our new design?',
 					ctaButton: 'Give Feedback'
 				}
