@@ -1,0 +1,68 @@
+.endo-feedback-wrapper {
+	
+	display: none;
+}
+
+.endo-feedback-wrapper.is-visible {
+	display: block !important;
+	
+}
+
+.endo-feedback-form-wrapper {
+	width: 360px;
+	box-shadow: 0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08);
+	border: 1px solid #ddd;
+	padding: 10px 10px 0 10px;
+	background: #Efefef;
+	position: fixed;
+	bottom: 100px;
+	right: 50px;
+	border-radius: 3px;
+}
+
+#endo-feedback-form .field {
+	margin-bottom: 10px;
+}
+
+#endo-feedback-form .label {
+	font-size: 14px;
+}
+
+#endo-feedback-form textarea {
+	font-size: 14px;
+}
+
+#endo-feedback-form .is-submit {
+	font-size: 12px;
+	border-radius: 3px;
+	background: #0A2A58;
+	width: auto;
+	min-width: auto;
+	padding: 10px 20px;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+#endo-feedback-form .is-submit:hover {
+	background: #0D1A3B;
+}
+
+.endo-feedback-button {
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	background: #EC662C;
+	font-size: 12px;
+	border-radius: 3px;
+	box-shadow: 0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08);
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	width: auto;
+	min-width: auto;	
+}
+
+.endo-feedback-button:hover {
+	background: #E87E30;
+}
