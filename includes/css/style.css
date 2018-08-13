@@ -1,5 +1,4 @@
 .endo-feedback-wrapper {
-	
 	display: none;
 }
 
@@ -26,10 +25,14 @@
 
 #endo-feedback-form .label {
 	font-size: 14px;
+	display: block;
+	margin-bottom: 5px;
 }
 
 #endo-feedback-form textarea {
 	font-size: 14px;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 #endo-feedback-form .is-submit {
@@ -42,6 +45,7 @@
 	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+	color: #fff;
 }
 
 #endo-feedback-form .is-submit:hover {
@@ -63,10 +67,12 @@
 	width: auto;
 	min-width: auto;	
 	display: none;
+	color: #fff;
 }
 
 .endo-feedback-button:hover {
 	background: #E87E30;
+	color: #fff;
 }
 
 @media screen and (min-width: 900px) {
