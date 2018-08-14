@@ -14,6 +14,7 @@ class Endo_Feedback_Form {
 		// create cpt
 		// create front end display of form
 		// store data on submission (including IP address)
+		// store data use WP REST API
 		// add a honeypot for bots
 		// settings for
 		//  - display feedkback form
@@ -70,7 +71,7 @@ class Endo_Feedback_Form {
 							  <div class="control">
 							  	<input type="hidden" name="question" :value="question">
 							  	<?php wp_nonce_field( 'endo_feedback_submit', 'endo_feedback_nonce_field' ); ?>
-							    <button class="button is-submit">Submit</button>
+							    <button class="button is-submit" v-text="submitButton"></button>
 							  </div>
 							 
 							</div>
@@ -93,11 +94,12 @@ class Endo_Feedback_Form {
 					show: false,
 					question: 'What do you think of our new design?',
 					ctaButton: 'Give Feedback',
+					submitButton: 'Submit',
 					message: ''
 				},
 				methods: {
 					onSubmit: function() {
-						
+						this.submitButton = 'Submitting...';
 					}
 				}
 			});
