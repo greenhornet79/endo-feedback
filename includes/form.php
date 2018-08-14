@@ -71,7 +71,7 @@ class Endo_Feedback_Form {
 							  <div class="control">
 							  	<input type="hidden" name="question" :value="question">
 							  	<?php wp_nonce_field( 'endo_feedback_submit', 'endo_feedback_nonce_field' ); ?>
-							    <button class="button is-submit" v-bind:disabled="isSubmitting" v-text="submitButton"></button>
+							    <button class="button is-submit" v-bind:disabled="submitting" v-text="submitButton"></button>
 							  </div>
 							 
 							</div>
@@ -86,26 +86,6 @@ class Endo_Feedback_Form {
 			<button class="endo-feedback-button" @click="show = !show">{{ show ? 'X' : ctaButton }}</button>
 
 		</div>
-
-		<script>
-			var ef = new Vue({
-				el: '#endo-feedback',
-				data: {
-					show: false,
-					isSubmitting: false,
-					question: 'What do you think of our new design?',
-					ctaButton: 'Give Feedback',
-					submitButton: 'Submit',
-					message: ''
-				},
-				methods: {
-					onSubmit: function() {
-						this.isSubmitting = true;
-						this.submitButton = 'Submitting...';
-					}
-				}
-			});
-		</script>
 
 		<?php 
 	}
@@ -136,6 +116,8 @@ class Endo_Feedback_Form {
 
 	public function process_form( ) 
 	{
+
+		
 
 		// if ( 
 		//     ! isset( $_REQUEST['nonce'] ) 

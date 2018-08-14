@@ -1,50 +1,35 @@
-( function( $ )  {
+var ef = new Vue({
+	el: '#endo-feedback',
+	data: {
+		show: false,
+		submitting: false,
+		question: 'What do you think of our new design?',
+		ctaButton: 'Give Feedback',
+		submitButton: 'Submit',
+		message: ''
+	},
+	methods: {
+		onSubmit: function() {
+			this.submitting = true;
+			this.submitButton = 'Submitting...';
 
-	$(document).ready( function() {
-		
-		$('.endo-feedback-button').click(function() {
-			var text = $(this).text();
-			
-			$('.endo-feedback-wrapper').toggleClass('is-visible');
+			fetch(endo_feedback_script.ajaxurl, {
+		      method: 'POST',
+		      credentials: 'same-origin',
+		      headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
+		      body: 'action=endo_feedback_process&message=' + this.message + '&question=' + this.question + '&referrer=' + document.querySelector('input[name="_wp_http_referer"]').value
+		    })
+		    .then((resp) => resp.json())
+		    .then(function(data) {
+		      if(data.status == "success"){
+		       console.log(data);
 
-			if ( text == 'Give Feedback' ) {
-				$(this).text('X');
-			} else {
-				$(this).text('Give Feedback');
-			}
+		      }
+		    })
+		    .catch(function(error) {
+		      console.log(JSON.stringify(error));
+		    });
 
-		});
-
-		$('#endo-feedback-form').submit(function(e) {
-			e.preventDefault();
-
-			$('#endo-feedback-form .is-submit').text('Submitting...');
-
-			var message = $('textarea[name="message"]').val();
-			var question = $('input[name="question"]').val();
-			var nonce = $('#endo_feedback_nonce_field').val();
-			var referrer = $('input[name="_wp_http_referer"]').val();
-
-			var data = {
-				action: 'endo_feedback_process',
-				message: message,
-				question: question,
-				nonce: nonce,
-				referrer: referrer
-			};
-
-			$.get(endo_feedback_script.ajaxurl, data, function(resp) {
-				// $(this).after(resp).remove();
-				console.log(resp);
-				
-				$('.endo-feedback-form-wrapper').html('<p style="margin-bottom: 10px;">Thanks for your feedback!</p>').delay(1500).fadeOut(1000);
-				$('.endo-feedback-button').delay(1500).fadeOut(1000);
-
-
-			});
-		});
-
-	});
-
-
-})( jQuery );
+		}
+	}
+});
