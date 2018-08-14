@@ -77,14 +77,21 @@ class Endo_Feedback_Form {
 							</div>
 
 						</form>
-						
+
 					</div>
 					
 				</div>
 			</transition>
 
-			<button class="endo-feedback-button" @click="show = !show">{{ show ? 'X' : ctaButton }}</button>
+			<transition name="slide-fade">
+				<div class="endo-feedback-message" v-if="success">
+					<p>Thanks for your feedback!</p>
+				</div>
+			</transition>
 
+			<transition name="slide-fade">
+				<button class="endo-feedback-button" v-if="!success" @click="show = !show">{{ show ? 'X' : ctaButton }}</button>
+			</transition>
 		</div>
 
 		<?php 

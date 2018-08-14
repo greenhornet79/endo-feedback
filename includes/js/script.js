@@ -6,7 +6,8 @@ var ef = new Vue({
 		question: 'What do you think of our new design?',
 		ctaButton: 'Give Feedback',
 		submitButton: 'Submit',
-		message: ''
+		message: '',
+		success: false
 	},
 	methods: {
 		onSubmit: function() {
@@ -21,9 +22,13 @@ var ef = new Vue({
 		    })
 		    .then((resp) => resp.json())
 		    .then(function(data) {
-		      if(data.status == "success"){
-		       console.log(data);
-
+		   
+		      if(data.response == "success"){
+		      	ef.show = false;
+		        ef.success = true;
+		        setTimeout(function(){
+	                ef.success = false;
+	            }, 1000);
 		      }
 		    })
 		    .catch(function(error) {
