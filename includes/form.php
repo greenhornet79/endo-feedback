@@ -71,7 +71,7 @@ class Endo_Feedback_Form {
 							  <div class="control">
 							  	<input type="hidden" name="question" :value="question">
 							  	<?php wp_nonce_field( 'endo_feedback_submit', 'endo_feedback_nonce_field' ); ?>
-							    <button class="button is-submit" v-text="submitButton"></button>
+							    <button class="button is-submit" v-bind:disabled="isSubmitting" v-text="submitButton"></button>
 							  </div>
 							 
 							</div>
@@ -92,6 +92,7 @@ class Endo_Feedback_Form {
 				el: '#endo-feedback',
 				data: {
 					show: false,
+					isSubmitting: false,
 					question: 'What do you think of our new design?',
 					ctaButton: 'Give Feedback',
 					submitButton: 'Submit',
@@ -99,6 +100,7 @@ class Endo_Feedback_Form {
 				},
 				methods: {
 					onSubmit: function() {
+						this.isSubmitting = true;
 						this.submitButton = 'Submitting...';
 					}
 				}
